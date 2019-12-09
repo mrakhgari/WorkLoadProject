@@ -1,23 +1,32 @@
 import java.util.*;
 
 public class Workstation {
-    private List<Job> jobs;
+    private List<Job> readyQueue;
+    private List<Job> completedJobs;
+    private Job inExecution;
+    private int endTime;
 
     public Workstation(){
-        this.jobs = new ArrayList<>();
+        this.readyQueue = new ArrayList<>();
+        this.completedJobs = new ArrayList<>();
+    }
+
+    public void sortWithId(){
+        Comparator<Job> compareIds = Comparator.comparing(Job::getId);
+        Collections.sort(this.completedJobs, compareIds);
     }
 
     public boolean addJob(Job j){
-        return this.jobs.add(j);
+        return this.readyQueue.add(j);
     }
 
     public void sortWithArrivalTime(){
-        Collections.sort(this.jobs);
+        Collections.sort(this.readyQueue);
     }
 
     @Override
     public String toString() {
-        Iterator<Job> it = jobs.iterator();
+        Iterator<Job> it = readyQueue.iterator();
         if (! it.hasNext())
             return "[]";
         StringBuilder sb = new StringBuilder();
@@ -29,4 +38,5 @@ public class Workstation {
             sb.append(',').append(' ');
         }
     }
+
 }

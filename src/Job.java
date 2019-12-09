@@ -1,24 +1,26 @@
+import java.util.Comparator;
+
 /**
  * Job class that contains information of Job.
  * fields of class are:
  * id: A unique integer to find a job and check whether it is equivalent to another job.
  * arrivalTime: a byte (range in 1 to 50) that show the arrival time of job
  * burstTime: a byte (range in 1 to 50) that show the burst time of job.
- * executedTime: time that the job executed.
+ * startTime: time that the job executed.
  *
  * @author _MuhmdrezA
  * @version 1.01
  */
 
 public class Job implements Comparable<Job> {
-    private int id;
+    private Integer id;
     private byte arrivalTime;
     private byte burstTime;
-    private int executedTime;
+    private int startTime;
 
     /**
      * Constructs a newly allocated {@code Job} object that
-     * represents the specified {@code int} id ,{@code byte} arrivalTime ,{@code byte} burstTime and {@code int} executedTime.
+     * represents the specified {@code int} id ,{@code byte} arrivalTime ,{@code byte} burstTime and {@code int} startTime.
      * @param id          a unique int.
      * @param arrivalTime a byte that shows arrival time of job.
      * @param burstTime   a byte that shows burst time of job.
@@ -29,7 +31,7 @@ public class Job implements Comparable<Job> {
         this.burstTime = burstTime;
     }
 
-    public int getId() {
+    public Integer getId() {
         return id;
     }
 
@@ -41,12 +43,12 @@ public class Job implements Comparable<Job> {
         return burstTime;
     }
 
-    public int getExecutedTime() {
-        return executedTime;
+    public int getStartTime() {
+        return startTime;
     }
 
-    public void setExecutedTime(int executedTime) {
-        this.executedTime = executedTime;
+    public void setStartTime(int startTime) {
+        this.startTime = startTime;
     }
 
     @Override
@@ -74,8 +76,8 @@ public class Job implements Comparable<Job> {
      *         {@code false} otherwise;
      */
     public static boolean hasOverlap(Job j1, Job j2) {
-        return j1.getExecutedTime() < j2.getExecutedTime() + j2.getBurstTime() &&
-                j2.getExecutedTime() < j1.getExecutedTime() + j1.getBurstTime();
+        return j1.getStartTime() < j2.getStartTime() + j2.getBurstTime() &&
+                j2.getStartTime() < j1.getStartTime() + j1.getBurstTime();
     }
 
     /**
@@ -93,15 +95,20 @@ public class Job implements Comparable<Job> {
      */
     @Override
     public int compareTo(Job o) {
-        return compare(this.getArrivalTime(), o.getArrivalTime(), this.getBurstTime(), o.getBurstTime());
+        return compare(this.getBurstTime(), o.getBurstTime(), this.getArrivalTime(), o.getArrivalTime());
     }
 
-    private int compare(byte x1, byte y1, int x2, int y2) {
-        return x1 == y1 ? Integer.compare(y2, x2) : Integer.compare(x1, y1);
+    private int compare(int x1, int y1, int x2, int y2) {
+        return x1 == y1 ? Integer.compare(x2, y2) : Integer.compare(y1, x1);
     }
+
+//    public static int compareIds(Job o){
+//        return compare(this.getId(), o.getId(), 0,0);
+//    }
 
     @Override
     public String toString() {
         return "(id: " + this.id + " arrivalTime: " + this.arrivalTime + " burstTime: " + this.burstTime + ")" ;
+//        return  "" + this.startTime;
     }
 }
