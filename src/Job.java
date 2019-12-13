@@ -17,6 +17,7 @@ public class Job implements Comparable<Job> {
     private byte arrivalTime;
     private byte burstTime;
     private int startTime;
+    private boolean isActive;
 
     /**
      * Constructs a newly allocated {@code Job} object that
@@ -45,6 +46,18 @@ public class Job implements Comparable<Job> {
 
     public int getStartTime() {
         return startTime;
+    }
+
+    public boolean isActive(){
+        return isActive;
+    }
+
+    public void setActive(){
+        isActive = true;
+    }
+
+    public  void  setDeavtive(){
+        isActive = false;
     }
 
     public void setStartTime(int startTime) {
@@ -108,7 +121,7 @@ public class Job implements Comparable<Job> {
 
     @Override
     public String toString() {
-        return "(id: " + this.id + " arrivalTime: " + this.arrivalTime + " burstTime: " + this.burstTime + ")" ;
+        return "(id: " + this.id + " exe time: " + this.startTime + " burstTime: " + this.burstTime + ")" ;
 //        return  "" + this.startTime;
     }
 }
