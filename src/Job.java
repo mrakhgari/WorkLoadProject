@@ -14,9 +14,9 @@ import java.util.Comparator;
 
 public class Job implements Comparable<Job> {
     private Integer id;
-    private byte arrivalTime;
-    private byte burstTime;
-    private int startTime;
+    private Integer arrivalTime;
+    private Integer burstTime;
+    private Integer startTime;
 
     /**
      * Constructs a newly allocated {@code Job} object that
@@ -25,21 +25,21 @@ public class Job implements Comparable<Job> {
      * @param arrivalTime a byte that shows arrival time of job.
      * @param burstTime   a byte that shows burst time of job.
      */
-    public Job(int id, byte arrivalTime, byte burstTime) {
+    public Job(int id, int arrivalTime, int burstTime) {
         this.id = id;
         this.arrivalTime = arrivalTime;
         this.burstTime = burstTime;
     }
 
-    public Integer getId() {
+    public int getId() {
         return id;
     }
 
-    public byte getArrivalTime() {
+    public int getArrivalTime() {
         return arrivalTime;
     }
 
-    public byte getBurstTime() {
+    public int getBurstTime() {
         return burstTime;
     }
 
