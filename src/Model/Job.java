@@ -1,7 +1,7 @@
-import java.util.Comparator;
+package Model;
 
 /**
- * Job class that contains information of Job.
+ * Model.Job class that contains information of Model.Job.
  * fields of class are:
  * id: A unique integer to find a job and check whether it is equivalent to another job.
  * arrivalTime: a byte (range in 1 to 50) that show the arrival time of job
@@ -19,7 +19,7 @@ public class Job implements Comparable<Job> {
     private int startTime;
 
     /**
-     * Constructs a newly allocated {@code Job} object that
+     * Constructs a newly allocated {@code Model.Job} object that
      * represents the specified {@code int} id ,{@code byte} arrivalTime ,{@code byte} burstTime and {@code int} startTime.
      * @param id          a unique int.
      * @param arrivalTime a byte that shows arrival time of job.
@@ -68,7 +68,7 @@ public class Job implements Comparable<Job> {
     }
 
     /**
-     * Checks if the two job {@code Job} ,{ @code Job} have time interference?
+     * Checks if the two job {@code Model.Job} ,{ @code Model.Job} have time interference?
      *
      * @param j1 first job.
      * @param j2 second job.
@@ -81,11 +81,11 @@ public class Job implements Comparable<Job> {
     }
 
     /**
-     * Compares two {@code Job} objects numerically.
+     * Compares two {@code Model.Job} objects numerically.
      *
-     * @param o the {@code Job} to be compared.
-     * @return the value {@code 0} if this {@code Job} is
-     *          equal to the argument {@code Job}; a value less than
+     * @param o the {@code Model.Job} to be compared.
+     * @return the value {@code 0} if this {@code Model.Job} is
+     *          equal to the argument {@code Model.Job}; a value less than
      *          {@code 0} if this.arrivalTime {@code Integer} is numerically less
      *          than the argument.arrivalTime {@code Integer} or if this.arrivalTime {@code Integer} is equal to
      *          argument.arrivalTime and this.burstTime {@code Integer} is numerically less
@@ -102,7 +102,7 @@ public class Job implements Comparable<Job> {
         return x1 == y1 ? Integer.compare(x2, y2) : Integer.compare(y1, x1);
     }
 
-//    public static int compareIds(Job o){
+//    public static int compareIds(Model.Job o){
 //        return compare(this.getId(), o.getId(), 0,0);
 //    }
 
