@@ -32,7 +32,9 @@ class startTime {
     }
 }
 public class FileHandler {
-
+    private String oneLineOfFile;
+    private String[] resOneLineOfFile;
+    private int lineNum = 0;
 
     public FileHandler() throws FileNotFoundException {
 
@@ -41,9 +43,8 @@ public class FileHandler {
 
     public ArrayList<startTime> readOutputFile() throws IOException {
         ArrayList<startTime> startTimes = new ArrayList<startTime>();
-        String oneLineOfFile;
-        String[] resOneLineOfFile;
-        int lineNum = 0;
+
+
         File file = new File("./src/Checker/outputFile.txt");
         BufferedReader br = new BufferedReader(new FileReader(file));
         oneLineOfFile = br.readLine();
@@ -68,9 +69,8 @@ public class FileHandler {
 
     public ArrayList<Job> readInputFile() throws IOException {
         ArrayList<Job> jobs = new ArrayList<Job>();
-        String oneLineOfFile;
-        String[] resOneLineOfFile;
-        int lineNum = 0;
+
+
         File file = new File("./src/Checker/inputFile.txt");
         BufferedReader br = new BufferedReader(new FileReader(file));
         oneLineOfFile = br.readLine();
