@@ -1,3 +1,6 @@
+/**
+ * @author MohamadHasan Taghadosi
+ */
 package Checker;
 
 public class StartTime{

@@ -1,13 +1,14 @@
+/**
+ * @author MohamadHasan Taghadosi
+ */
+
 package Checker;
 import Model.Job;
 
 import java.io.*;
 import java.util.ArrayList;
 
-/**
- * @author MohamadHasan Taghadosi
- * @date
- */
+
 
 public class FileHandler {
     private ArrayList<StartTime> startTimes;
@@ -16,9 +17,12 @@ public class FileHandler {
     private String[] resOneLineOfFile;
     private int time;
 
-    public FileHandler() throws FileNotFoundException {
+    public FileHandler() throws IOException {
         startTimes = new ArrayList<StartTime>();
         jobs = new ArrayList<Job>();
+        readOutputFile();
+        readInputFile();
+
     }
 
     public ArrayList<StartTime> getStartTimes() {
@@ -33,7 +37,7 @@ public class FileHandler {
         return time;
     }
 
-    public ArrayList<StartTime> readOutputFile() throws IOException {
+    private void readOutputFile() throws IOException {
 
 
 
@@ -50,18 +54,14 @@ public class FileHandler {
                                         Integer.parseInt(resOneLineOfFile[1]),
                                         Integer.parseInt(resOneLineOfFile[2])
                                         ));
-            System.out.println(resOneLineOfFile[1]);
         }
 
-        return startTimes;
 
 
     }
 
 
-    public ArrayList<Job> readInputFile() throws IOException {
-
-
+    private void readInputFile() throws IOException {
 
         File file = new File("./src/Checker/inputFile.txt");
         BufferedReader br = new BufferedReader(new FileReader(file));
@@ -75,11 +75,7 @@ public class FileHandler {
                     Byte.parseByte(resOneLineOfFile[1]),
                     Byte.parseByte(resOneLineOfFile[2])
             ));
-            System.out.println(Byte.parseByte(resOneLineOfFile[1]));
         }
-
-        return jobs;
-
 
     }
 
