@@ -22,7 +22,7 @@ public class Checker {
         resTime = fileHandler.getTime();
     }
 
-    public boolean haveOverLab() {
+    private boolean haveOverLab() {
         Iterator jobsIterator = jobs.iterator();
         Iterator startTimesIterator = startTimes.iterator();
         Job tmpJob;
@@ -32,6 +32,15 @@ public class Checker {
             tmpJob = (Job) jobsIterator.next();
             tmpStartTime = (StartTime) startTimesIterator.next();
 
+
         }
+
+        return false;
+    }
+    private boolean haveTrueTime() {
+        return false;
+    }
+    public boolean isPassCheck() {
+        return haveOverLab() & haveTrueTime();
     }
 }
