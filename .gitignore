@@ -1,3 +1,5 @@
 # Untracked files:
 .idea
 *.iml
+*.txt
+/out
