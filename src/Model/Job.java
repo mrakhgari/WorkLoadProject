@@ -45,7 +45,7 @@ public class Job implements Comparable<Job> {
         return burstTime;
     }
 
-    int getStartTime() {
+    public int getStartTime() {
         return startTime;
     }
 

@@ -68,11 +68,20 @@ public class Handler {
 
         }
 
-        for (Workstation w : workstations) {
-            w.sortWithId();
-            System.out.println(w);
-        }
         System.out.println(timeLine);
+
+        for (Workstation w : workstations){
+            w.sortWithId();
+        }
+
+        int numberOfJobs = workstations.get(0).getCompletedJobs().size();
+
+        for (int i = 0; i < numberOfJobs; i++){
+            for (Workstation w : workstations){
+                System.out.print(w.getCompletedJobs().get(i).getStartTime() + " ");
+            }
+            System.out.println();
+        }
     }
 
     private ArrayList<ArrayList<Workstation>> findPermute(List<Workstation> workstations) {

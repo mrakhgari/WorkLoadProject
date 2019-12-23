@@ -14,6 +14,10 @@ public class Workstation {
         this.completedJobs = new ArrayList<>();
     }
 
+    public List<Job> getCompletedJobs() {
+        return completedJobs;
+    }
+
     public void sortWithId() {
         Comparator<Job> compareIds = Comparator.comparing(Job::getId);
         this.completedJobs.sort(compareIds);
