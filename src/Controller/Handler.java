@@ -2,7 +2,10 @@ package Controller;
 
 import Model.*;
 
+import java.io.BufferedWriter;
+import java.io.FileWriter;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class Handler {
@@ -68,19 +71,22 @@ public class Handler {
 
         }
 
-        System.out.println(timeLine);
+        String outputFile = "./src/output.txt";
+        writeToFile(timeLine + "\n", outputFile);
+        //System.out.println(timeLine);
 
         for (Workstation w : workstations){
             w.sortWithId();
         }
 
         int numberOfJobs = workstations.get(0).getCompletedJobs().size();
-
         for (int i = 0; i < numberOfJobs; i++){
             for (Workstation w : workstations){
-                System.out.print(w.getCompletedJobs().get(i).getStartTime() + " ");
+                writeToFile(w.getCompletedJobs().get(i).getStartTime() + " ", outputFile);
+                //System.out.print(w.getCompletedJobs().get(i).getStartTime() + " ");
             }
-            System.out.println();
+            writeToFile("\n", outputFile);
+            //System.out.println();
         }
     }
 
@@ -108,5 +114,15 @@ public class Handler {
             result = new ArrayList<>(current);
         }
         return result;
+    }
+
+    private void writeToFile(String fileContent,String fileName){
+        try {
+            BufferedWriter writer = new BufferedWriter(new FileWriter(fileName, true));
+            writer.write(fileContent);
+            writer.close();
+        }catch (Exception e){
+            System.out.println(e.getMessage());
+        }
     }
 }
