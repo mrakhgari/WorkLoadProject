@@ -41,7 +41,7 @@ public class FileHandler {
 
 
         int i = 0;
-        File file = new File("./src/Checker/testCase.txt");
+        File file = new File("./src/Checker/outputFile.txt");
         BufferedReader br = new BufferedReader(new FileReader(file));
         oneLineOfFile = br.readLine();
 //        time = Integer.parseInt(oneLineOfFile);
@@ -54,8 +54,9 @@ public class FileHandler {
                                         Integer.parseInt(resOneLineOfFile[1]),
                                         Integer.parseInt(resOneLineOfFile[2])
                                         ));
+            i++;
         }
-        System.out.println(i);
+
 
 
 
