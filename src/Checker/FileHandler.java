@@ -3,7 +3,7 @@
  */
 
 package Checker;
-import Model.Job;
+
 
 import java.io.*;
 import java.util.ArrayList;
@@ -37,14 +37,14 @@ public class FileHandler {
         return time;
     }
 
-    private void readOutputFile() throws IOException {
+    public void readOutputFile() throws IOException {
 
 
-
-        File file = new File("./src/Checker/outputFile.txt");
+        int i = 0;
+        File file = new File("./src/Checker/testCase.txt");
         BufferedReader br = new BufferedReader(new FileReader(file));
         oneLineOfFile = br.readLine();
-        time = Integer.parseInt(oneLineOfFile);
+//        time = Integer.parseInt(oneLineOfFile);
         while ((oneLineOfFile = br.readLine()) != null) {
             if (oneLineOfFile.equals("")) {
                 break;
@@ -55,6 +55,7 @@ public class FileHandler {
                                         Integer.parseInt(resOneLineOfFile[2])
                                         ));
         }
+        System.out.println(i);
 
 
 
@@ -72,8 +73,9 @@ public class FileHandler {
             }
             resOneLineOfFile = oneLineOfFile.split(" ");
             jobs.add(new Job(Integer.parseInt(resOneLineOfFile[0]),
-                    Byte.parseByte(resOneLineOfFile[1]),
-                    Byte.parseByte(resOneLineOfFile[2])
+                    Integer.parseInt(resOneLineOfFile[1]),
+                    Integer.parseInt(resOneLineOfFile[2]),
+                    Integer.parseInt(resOneLineOfFile[3])
             ));
         }
 

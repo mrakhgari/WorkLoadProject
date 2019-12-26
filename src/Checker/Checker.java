@@ -2,7 +2,7 @@
  * @author MohamadHasan Taghadosi
  */
 package Checker;
-import Model.Job;
+
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -32,6 +32,25 @@ public class Checker {
             tmpJob = (Job) jobsIterator.next();
             tmpStartTime = (StartTime) startTimesIterator.next();
 
+            if(     (tmpStartTime.getStartOnWS1() > tmpStartTime.getStartOnWS2() &&  tmpStartTime.getStartOnWS1() + tmpJob.getOnWS1() < tmpStartTime.getStartOnWS2()) ||
+                    (tmpStartTime.getStartOnWS1() > tmpStartTime.getStartOnWS3() &&  tmpStartTime.getStartOnWS1() + tmpJob.getOnWS1() < tmpStartTime.getStartOnWS3()) ||
+                    (tmpStartTime.getStartOnWS1() < tmpStartTime.getStartOnWS2() &&  tmpStartTime.getStartOnWS1() + tmpJob.getOnWS1() > tmpStartTime.getStartOnWS2()) ||
+                    (tmpStartTime.getStartOnWS1() < tmpStartTime.getStartOnWS3() &&  tmpStartTime.getStartOnWS1() + tmpJob.getOnWS1() > tmpStartTime.getStartOnWS3())) {
+                return true;
+            }
+            if(     (tmpStartTime.getStartOnWS2() > tmpStartTime.getStartOnWS1() &&  tmpStartTime.getStartOnWS2() + tmpJob.getOnWS2() < tmpStartTime.getStartOnWS1()) ||
+                    (tmpStartTime.getStartOnWS2() > tmpStartTime.getStartOnWS3() &&  tmpStartTime.getStartOnWS2() + tmpJob.getOnWS2() < tmpStartTime.getStartOnWS3()) ||
+                    (tmpStartTime.getStartOnWS2() < tmpStartTime.getStartOnWS1() &&  tmpStartTime.getStartOnWS2() + tmpJob.getOnWS2() > tmpStartTime.getStartOnWS1()) ||
+                    (tmpStartTime.getStartOnWS2() < tmpStartTime.getStartOnWS3() &&  tmpStartTime.getStartOnWS2() + tmpJob.getOnWS2() > tmpStartTime.getStartOnWS3())) {
+                return true;
+            }
+            if(     (tmpStartTime.getStartOnWS3() > tmpStartTime.getStartOnWS2() &&  tmpStartTime.getStartOnWS3() + tmpJob.getOnWS3() < tmpStartTime.getStartOnWS2()) ||
+                    (tmpStartTime.getStartOnWS3() > tmpStartTime.getStartOnWS1() &&  tmpStartTime.getStartOnWS3() + tmpJob.getOnWS3() < tmpStartTime.getStartOnWS1()) ||
+                    (tmpStartTime.getStartOnWS3() < tmpStartTime.getStartOnWS2() &&  tmpStartTime.getStartOnWS3() + tmpJob.getOnWS3() > tmpStartTime.getStartOnWS2()) ||
+                    (tmpStartTime.getStartOnWS3() < tmpStartTime.getStartOnWS1() &&  tmpStartTime.getStartOnWS3() + tmpJob.getOnWS3() > tmpStartTime.getStartOnWS1())) {
+                return true;
+            }
+
 
         }
 
@@ -41,6 +60,6 @@ public class Checker {
         return false;
     }
     public boolean isPassCheck() {
-        return haveOverLab() & haveTrueTime();
+        return !haveOverLab() & haveTrueTime();
     }
 }
